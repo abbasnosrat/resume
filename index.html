@@ -151,8 +151,18 @@
         .hero-image-container {
             flex-shrink: 0;
             width: 300px;
-            height: 300px;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Wrapper to handle the ring animation separate from the container layout */
+        .profile-frame {
+            position: relative;
+            width: 300px;
+            height: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -168,6 +178,7 @@
             box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
             transition: transform 0.5s ease;
             animation: profileFloat 6s infinite ease-in-out;
+            z-index: 2;
         }
 
         .profile-pic-wrapper:hover {
@@ -181,8 +192,8 @@
             display: block;
         }
 
-        /* Decorative ring around image */
-        .hero-image-container::before {
+        /* Decorative ring around image - moved to profile-frame */
+        .profile-frame::before {
             content: '';
             position: absolute;
             width: 110%;
@@ -190,7 +201,37 @@
             border-radius: 50%;
             border: 1px dashed var(--accent-secondary);
             animation: spin 20s linear infinite;
-            z-index: -1;
+            z-index: 1;
+        }
+
+        /* CV Button Styles */
+        .cv-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            border: 2px solid var(--accent-secondary);
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .cv-btn:hover {
+            background: var(--accent-secondary);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(189, 0, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .cv-btn i {
+            font-size: 1rem;
         }
 
         @keyframes profileFloat {
@@ -416,6 +457,18 @@
             gap: 0.5rem;
         }
 
+        /* Style for links inside project titles */
+        .project-title a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .project-title a:hover {
+            color: var(--accent-primary);
+            text-decoration: underline;
+        }
+
         .project-status {
             font-size: 0.7rem;
             padding: 2px 6px;
@@ -428,6 +481,15 @@
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
+        }
+
+        .project-desc a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+        }
+
+        .project-desc a:hover {
+            text-decoration: underline;
         }
 
         .project-skills {
@@ -517,11 +579,11 @@
 
             .hero-image-container {
                 width: 200px;
-                height: 200px;
             }
 
-            .contact-info {
-                justify-content: center;
+            .profile-frame {
+                width: 200px;
+                height: 200px;
             }
         }
 
@@ -555,10 +617,7 @@
     <!-- Hero Section -->
     <header id="hero">
         <div class="container">
-            <!-- New Flex Layout -->
             <div class="hero-layout">
-                
-                <!-- Text Content -->
                 <div class="hero-content">
                     <h1>Abbas Nosrat</h1>
                     <h2>AI RESEARCHER</h2>
@@ -585,14 +644,16 @@
                     </div>
                 </div>
 
-                <!-- Profile Image -->
                 <div class="hero-image-container">
-                    <div class="profile-pic-wrapper">
-                        <!-- REPLACE THE SRC BELOW WITH YOUR IMAGE PATH -->
-                        <img src="./profile.jpeg" alt="Abbas Nosrat Profile Picture">
+                    <div class="profile-frame">
+                        <div class="profile-pic-wrapper">
+                            <img src="./profile.jpeg" alt="Abbas Nosrat Profile Picture">
+                        </div>
                     </div>
+                    <a href="./CV.pdf" class="cv-btn" download>
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
                 </div>
-
             </div>
         </div>
     </header>
@@ -642,7 +703,6 @@
                     <button class="view-projects-btn" onclick="toggleProjects(this)">View Projects</button>
                     
                     <div class="projects-container">
-                        <!-- Project mapped from "Sepehrban Hooshyar" section in CV -->
                         <div class="project-item">
                             <h4 class="project-title">ELINT PULSE DETECTION <span class="project-status">Completed</span></h4>
                             <p class="project-desc">I developed a model for detecting ELINT pulses for accurate EDW estimation and emmiter identification using a TCN‑Transformer hybrid architecture combined with a hybrid focal loss + contrastive learning training framework.</p>
@@ -664,13 +724,12 @@
                             <div class="role-title">AI Researcher</div>
                             <div class="company">Iranian Military Research Center</div>
                         </div>
-                        <div class="date-badge">Sep 2024 - Oct 2024</div>
+                        <div class="date-badge">Sep 2023 - Oct 2024</div>
                     </div>
                     <p style="color:var(--text-muted); font-size:0.9rem;">Conducted research in computer audition and voice cloning technologies during military service replacement.</p>
                     <button class="view-projects-btn" onclick="toggleProjects(this)">View Projects</button>
                     
                     <div class="projects-container">
-                        <!-- Project mapped from "Military" section in CV -->
                         <div class="project-item">
                             <h4 class="project-title">ZERO‑SHOT VOICE CONVERSION USING NON‑PARALLEL AUDIO <span class="project-status">Completed</span></h4>
                             <p class="project-desc">I developed a framework for Persian VC for the Iranian military as a replacement project for my military service. The framework utilized a flow‑matching conditioned with Cam++ speaker embeddings and OpenAI’s Whisper for content embeddings to clone the voice of a speaker from a small speech utterance without prior training on the target speaker. The model was trained on CommonVoice dataset and deployed using TorchServe and Docker.</p>
@@ -698,7 +757,6 @@
                         <div class="date-badge">Dec 2024 - Mar 2025</div>
                     </div>
                     <p style="color:var(--text-muted); font-size:0.9rem;">Taught courses on Data Analysis, Machine Learning, and Deep Learning.</p>
-                    <!-- No specific development projects listed for this role in CV, just teaching -->
                 </div>
 
                 <!-- Job 4 -->
@@ -715,7 +773,6 @@
                     <button class="view-projects-btn" onclick="toggleProjects(this)">View Projects</button>
                     
                     <div class="projects-container">
-                        <!-- Projects mapped from "Ronak Pharmaceutical Co" section in CV -->
                         <div class="project-item">
                             <h4 class="project-title">NLP‑BASED PERFORMANCE EVALUATION OF MEDICAL SALES REPRESENTATIVES <span class="project-status">Completed</span></h4>
                             <p class="project-desc">In this project, I used NLP techniques to find the most similar sales invoice to each visit record and if that invoice was created within 40 days after the visit, that visit is considered successful.</p>
@@ -727,8 +784,11 @@
                             </div>
                         </div>
                         <div class="project-item">
-                            <h4 class="project-title">MARKET SIZE PREDICTION <span class="project-status">Completed</span></h4>
-                            <p class="project-desc">In this Project, I used FBProphet, XGBoost, and Bayesian optimization to predict the market size for each product for the following year. This will lead you to the Streamlit app.</p>
+                            <h4 class="project-title">
+                                <a href="https://github.com/abbasnosrat/RonakMarketSizePrediction" target="_blank">MARKET SIZE PREDICTION</a>
+                                <span class="project-status">Completed</span>
+                            </h4>
+                            <p class="project-desc">In this Project, I used FBProphet, XGBoost, and Bayesian optimization to predict the market size for each product for the following year. <a href="https://ronakmarketsizeprediction.streamlit.app/" target="_blank">This</a> will lead you to the Streamlit app.</p>
                             <div class="project-skills">
                                 <span class="skill-tag">Time‑Series Prediction</span>
                                 <span class="skill-tag">FBProphet</span>
@@ -753,9 +813,11 @@
                     <button class="view-projects-btn" onclick="toggleProjects(this)">View Projects</button>
                     
                     <div class="projects-container">
-                        <!-- Projects mapped from "University of Tehran" section in CV -->
                         <div class="project-item">
-                            <h4 class="project-title">TFNET <span class="project-status">Completed</span></h4>
+                            <h4 class="project-title">
+                                <a href="https://github.com/abbasnosrat/TFNet" target="_blank">TFNET</a> 
+                                <span class="project-status">Completed</span>
+                            </h4>
                             <p class="project-desc">This is my main master’s project in which I developed a method for parametric and structural identification of industrial systems from a non‑persistent excitation and a handful of I/O data.</p>
                             <div class="project-skills">
                                 <span class="skill-tag">System Identification</span>
@@ -777,19 +839,19 @@
                             </div>
                         </div>
                         <div class="project-item">
-                            <h4 class="project-title">Coursework Projects <span class="project-status">Completed</span></h4>
+                            <h4 class="project-title">COURSEWORK PROJECTS <span class="project-status">Completed</span></h4>
                             <p class="project-desc">
-                                <strong>Implementation of UNet:</strong> Object Segmentation, Computer Vision.<br>
-                                <strong>Implementation of CycleGan and VQVAE:</strong> Computer Vision, Generative Modeling, GAN, VAE.<br>
-                                <strong>Implementation of rotation prediction method:</strong> Self‑Supervised Learning, Representation Learning.<br>
-                                <strong>Adversarial attacks and explainability:</strong> Fast Gradient Adversarial Attacks, Model Explainability, LLMs, SHAP, LIME.<br>
-                                <strong>Few‑shot classification and person reidentification using contrastive learning:</strong> Metric Learning, Contrastive Learning, Siames Networks, Few‑Shot Learning.
+                                <strong><a href="https://github.com/abbasnosrat/UNet" target="_blank">Implementation of UNet:</a></strong> Object Segmentation, Computer Vision.<br>
+                                <strong><a href="https://github.com/abbasnosrat/assignments_/tree/master/advanced_deep_learning/HW2" target="_blank">Implementation of CycleGan and VQVAE:</a></strong> Computer Vision, Generative Modeling, GAN, VAE.<br>
+                                <strong><a href="https://github.com/abbasnosrat/assignments_/tree/master/advanced_deep_learning/HW3" target="_blank">Implementation of rotation prediction method:</a></strong> Self‑Supervised Learning, Representation Learning.<br>
+                                <strong><a href="https://github.com/abbasnosrat/assignments_/tree/master/advanced_deep_learning/HW4" target="_blank">Adversarial attacks and explainability:</a></strong> Fast Gradient Adversarial Attacks, Model Explainability, LLMs, SHAP, LIME.<br>
+                                <strong><a href="https://github.com/abbasnosrat/assignments_/tree/master/advanced_deep_learning/HW1" target="_blank">Few‑shot classification and person reidentification using contrastive learning:</a></strong> Metric Learning, Contrastive Learning, Siames Networks, Few‑Shot Learning.
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Job 6 (Hobby Projects treated as experience) -->
+                <!-- Job 6 (Hobby Projects) -->
                 <div class="experience-card">
                     <div class="timeline-dot"></div>
                     <div class="card-header">
@@ -799,13 +861,27 @@
                         </div>
                         <div class="date-badge">Ongoing</div>
                     </div>
-                    <p style="color:var(--text-muted); font-size:0.9rem;">Exploring Agentic AI, Generative Models, and Graph Neural Networks.</p>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Exploring Agentic AI, Generative Models, Reinforcement Learning, and Graph Neural Networks.</p>
                     <button class="view-projects-btn" onclick="toggleProjects(this)">View Projects</button>
                     
                     <div class="projects-container">
-                        <!-- Projects mapped from "Hobby Projects" section in CV -->
+                        <!-- New RL Project Added Here -->
                         <div class="project-item">
-                            <h4 class="project-title">SQLMCPSERVER + AGENT <span class="project-status">Completed</span></h4>
+                            <h4 class="project-title">
+                                <a href="https://github.com/abbasnosrat/My-RL-Journey-" target="_blank">RL</a>
+                                <span class="project-status">Ongoing</span>
+                            </h4>
+                            <p class="project-desc">I wanted to get into RL and what better way to do some algorithms from scratch? So I got to work and implemented a few of the most popular algorithms from scratch after watching Dave Silver's RL course. This project contains the implementations for Dynamic Programming, Monte Carlo/TD algorithms, DQN, Policy Gradient, Actor Critic, DDPG, and SAC.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Reinforcement Learning</span>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <h4 class="project-title">
+                                <a href="https://github.com/abbasnosrat/MCPServerAgent" target="_blank">SQLMCPSERVER + AGENT</a>
+                                <span class="project-status">Completed</span>
+                            </h4>
                             <p class="project-desc">In this project I developed an AI agent that can manipulate a database of retail cars using SQL. The agent can add new ads or show the existing cars according to the user preference.</p>
                             <div class="project-skills">
                                 <span class="skill-tag">Agentic AI</span>
@@ -817,7 +893,10 @@
                             </div>
                         </div>
                         <div class="project-item">
-                            <h4 class="project-title">RESEARCH IDENTIFICATION <span class="project-status">Completed</span></h4>
+                            <h4 class="project-title">
+                                <a href="https://github.com/abbasnosrat/research_identification" target="_blank">RESEARCH IDENTIFICATION</a>
+                                <span class="project-status">Completed</span>
+                            </h4>
                             <p class="project-desc">Reading research papers has always been a major hassle for me—especially when trying to identify the latest research themes of a particular author. I wanted to try LangGraph for the first time, but since I can’t access the OpenAI stack from Iran, I decided to build my own agent using a local Qwen3 model. I developed a scraping tool to collect the latest research papers from an author’s Google Scholar profile and used the model to identify the main themes of each paper.</p>
                             <div class="project-skills">
                                 <span class="skill-tag">Agentic AI</span>
@@ -830,7 +909,10 @@
                             </div>
                         </div>
                         <div class="project-item">
-                            <h4 class="project-title">FLOWMATCHING FOR GENERATIVE MODELING <span class="project-status">Completed</span></h4>
+                            <h4 class="project-title">
+                                <a href="https://github.com/abbasnosrat/FlowMatchingForGenerativeModeling" target="_blank">FLOWMATCHING FOR GENERATIVE MODELING</a>
+                                <span class="project-status">Completed</span>
+                            </h4>
                             <p class="project-desc">Since my Voice Conversion project required this paper and there was no intuitive tutorial for this paper, I decided to share my simple implementation on GitHub.</p>
                             <div class="project-skills">
                                 <span class="skill-tag">Diffusion‑Based Generative Models</span>
@@ -840,14 +922,20 @@
                             </div>
                         </div>
                         <div class="project-item">
-                            <h4 class="project-title">COMPARISON OF MTL LOSS‑BALANCING STRATEGIES <span class="project-status">Completed</span></h4>
+                            <h4 class="project-title">
+                                <a href="https://github.com/abbasnosrat/mtl_comp" target="_blank">COMPARISON OF MTL LOSS‑BALANCING STRATEGIES</a>
+                                <span class="project-status">Completed</span>
+                            </h4>
                             <p class="project-desc">While working on TFNet 2, I had to compare different loss‑balancing strategies in MTL. Here is my implementation of Three methods in this field.</p>
                             <div class="project-skills">
                                 <span class="skill-tag">Multi‑Task Learning</span>
                             </div>
                         </div>
                         <div class="project-item">
-                            <h4 class="project-title">GNNS FROM SCRATCH <span class="project-status">Ongoing</span></h4>
+                            <h4 class="project-title">
+                                <a href="https://github.com/abbasnosrat/GNNs-From-Scratch" target="_blank">GNNS FROM SCRATCH</a>
+                                <span class="project-status">Ongoing</span>
+                            </h4>
                             <p class="project-desc">I was trying to get into GNNs and thought of no better way than to implement a few architectures from scratch. In this repo, I have implemented Graph Convolution, GAT, and GraphSage and trained them on CORA dataset. I will add new implementations further down the line.</p>
                             <div class="project-skills">
                                 <span class="skill-tag">Graph Neural Networks</span>
@@ -899,8 +987,10 @@
             <h2 class="section-title">Publications</h2>
             <div class="info-card">
                 <div class="pub-item">
-                    <h3 class="sub-title" style="font-size:1rem;">TFNet: Few‑Shot Identification of LTI Systems Based on Convolutional Neural Networks</h3>
-                    <p style="color:var(--text-muted); font-size:0.9rem;">
+                   <h3 class="sub-title" style="font-size:1rem;">
+    <a href="https://doi.org/10.1016/j.jprocont.2023.103034" style="text-decoration: none; color: inherit;">TFNet: Few‑Shot Identification of LTI Systems Based on Convolutional Neural Networks</a>
+</h3>
+<p style="color:var(--text-muted); font-size:0.9rem;">
                         <strong>Journal:</strong> Journal of Process Control<br>
                         <strong>Authors:</strong> Abbas Nosrat, Ahmad Kalhor, Mohammad Reza Nayeri, Babak N Araabi<br>
                         <strong>Impact Factor:</strong> 3.3 | <strong>Cite Score:</strong> 7
@@ -968,12 +1058,10 @@
     </footer>
 
     <script>
-        // Simple interaction for project toggles
         function toggleProjects(btn) {
             const container = btn.nextElementSibling;
             const isOpen = container.classList.contains('open');
             
-            // Close all other open containers (accordion style)
             document.querySelectorAll('.projects-container.open').forEach(el => {
                 if(el !== container) el.classList.remove('open');
             });
@@ -984,14 +1072,12 @@
             } else {
                 container.classList.add('open');
                 btn.textContent = 'Hide Projects';
-                // Smooth scroll to the opened content if needed
                 setTimeout(() => {
                     container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 100);
             }
         }
 
-        // Intersection Observer for animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
