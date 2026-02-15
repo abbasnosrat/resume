@@ -1,1015 +1,1012 @@
 <!DOCTYPE html>
-<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbas Nosrat | AI Researcher Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0f;
+            --card-bg: #13131a;
+            --card-border: #2a2a3a;
+            --accent-primary: #00f2ff; /* Cyber Cyan */
+            --accent-secondary: #bd00ff; /* Cyber Purple */
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0b0;
+            --font-display: 'Space Mono', monospace;
+            --font-body: 'Inter', sans-serif;
+        }
 
-   <!--- Basic Page Needs
-   ================================================== -->
-   <meta charset="utf-8">
-	<title>Abbas Nosrat</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-   <!-- Mobile Specific Metas
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        html {
+            scroll-behavior: smooth;
+        }
 
-	<!-- CSS
-    ================================================== -->
-   <link rel="stylesheet" href="css/default.css">
-	<link rel="stylesheet" href="css/layout.css">
-   <link rel="stylesheet" href="css/media-queries.css">
-   <link rel="stylesheet" href="css/magnific-popup.css">
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-   <!-- Script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
+        /* Decorative Background Elements */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
 
-   <!-- Favicons
-	================================================== -->
-	<link rel="shortcut icon" href="favicon.png" >
+        .glowing-orb {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, rgba(0,0,0,0) 70%);
+            top: -200px;
+            right: -200px;
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
 
+        .glowing-orb-2 {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(189, 0, 255, 0.08) 0%, rgba(0,0,0,0) 70%);
+            bottom: -100px;
+            left: -100px;
+            z-index: -1;
+            animation: float 25s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 30px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* Header & Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        /* New Layout for Hero */
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 650px; /* Limit text width for readability */
+        }
+
+        .hero-image-container {
+            flex-shrink: 0;
+            width: 300px;
+            height: 300px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-pic-wrapper {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            border: 3px solid var(--accent-primary);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+            transition: transform 0.5s ease;
+            animation: profileFloat 6s infinite ease-in-out;
+        }
+
+        .profile-pic-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-pic-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Decorative ring around image */
+        .hero-image-container::before {
+            content: '';
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            border-radius: 50%;
+            border: 1px dashed var(--accent-secondary);
+            animation: spin 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes profileFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #fff, var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideIn 1s ease-out;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: var(--accent-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            animation: slideIn 1.2s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .contact-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .contact-pill:hover {
+            border-color: var(--accent-primary);
+            background: rgba(0, 242, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .contact-pill i {
+            color: var(--accent-primary);
+        }
+
+        .contact-pill a {
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-primary);
+            box-shadow: 0 0 10px var(--accent-primary);
+        }
+
+        /* Experience Cards */
+        .timeline {
+            position: relative;
+            border-left: 2px solid var(--card-border);
+            margin-left: 20px;
+        }
+
+        .experience-card {
+            position: relative;
+            margin-bottom: 3rem;
+            margin-left: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: var(--accent-secondary);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -41px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--accent-secondary);
+            z-index: 2;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .role-title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .company {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .date-badge {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.05);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .view-projects-btn {
+            margin-top: 1rem;
+            background: transparent;
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+            padding: 0.6rem 1.2rem;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-projects-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-primary);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .view-projects-btn:hover {
+            color: #000;
+        }
+
+        .view-projects-btn:hover::before {
+            left: 0;
+        }
+
+        /* Projects List (Hidden initially) */
+        .projects-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+            margin-top: 1rem;
+        }
+
+        .projects-container.open {
+            max-height: 2000px; /* Arbitrary large height */
+            transition: max-height 1s ease-in-out;
+        }
+
+        .project-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--accent-primary);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            color: #fff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-status {
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(0, 242, 255, 0.2);
+            color: var(--accent-primary);
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .skill-tag {
+            font-size: 0.75rem;
+            background: #1a1a24;
+            color: #ccc;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #333;
+        }
+
+        /* Other Sections */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .sub-title {
+            font-family: var(--font-display);
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .pub-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #2a2a3a;
+        }
+
+        .pub-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 4rem;
+        }
+
+        /* Keyframes */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-layout {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-image-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            nav { padding: 1rem; }
+            .nav-links { display: none; }
+            .experience-card { margin-left: 10px; }
+            .timeline { border-left: none; }
+            .timeline-dot { display: none; }
+        }
+    </style>
 </head>
-
 <body>
 
-   <!-- Header
-   ================================================== -->
-   <header id="home">
-
-      <nav id="nav-wrap">
-
-         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-	      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
-
-         <ul id="nav" class="nav">
-            <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
-            <li><a class="smoothscroll" href="#about">About</a></li>
-            <li><a class="smoothscroll" href="#research">Research Interests</a></li>
-	         <li><a class="smoothscroll" href="#education">Education</a></li>
-
-             <li><a class="smoothscroll" href="#tech">Technical Background</a></li>
-             <li><a class="smoothscroll" href="#projects">Projects</a></li>
-             <li><a class="smoothscroll" href="#publications">Publications</a></li>
-             <li><a class="smoothscroll" href="#teaching">Teaching Experience</a></li>
-             <li><a class="smoothscroll" href="#hobbies">Personal Interests</a></li>
-            <!-- <li><a class="smoothscroll" href="#portfolio">Works</a></li>
-            <li><a class="smoothscroll" href="#testimonials">Testimonials</a></li> -->
-            <li><a class="smoothscroll" href="#contact">Contact</a></li>
-         </ul> <!-- end #nav -->
-
-      </nav> <!-- end #nav-wrap -->
-
-      <div class="row banner">
-         <div class="banner-text">
-            <h1 class="responsive-headline">I'm Abbas Nosrat.</h1>
-            <h3>I'm an <span>independent AI Researcher</span> with experience in various fields, such as Computer Vison, NLP, and Computer Audition.
-             Let's <a class="smoothscroll" href="#about">start scrolling</a>
-            and learn more <a class="smoothscroll" href="#about">about me</a>.</h3>
-            <hr />
-            <ul class="social">
-                <li><a href="https://www.facebook.com/abbas.nosrat" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="https://twitter.com/abbas_nosrat" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/abbas-nosrat-72b261234//" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                   <li><a href="https://github.com/abbasnosrat" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-            </ul>
-         </div>
-      </div>
-
-      <p class="scrolldown">
-         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
-      </p>
-
-   </header> <!-- Header End -->
-   
-
-   <!-- About Section
-   ================================================== -->
-   <section id="about">
-
-      <div class="row">
-
-         <div class="three columns">
-
-            <img class="profile-pic"  src="images/profilepic.jpg" alt="" />
-
-         </div>
-
-         <div class="nine columns main-col">
-
-            <h2>About Me</h2>
-
-            <p> 
-               I am a passionate AI researcher/instructor with expertise in deep learning and machine learning with a strong mathematical foundation due to my control engineering background and extensive hands-on experience in projects related to Computer Vision, NLP, DSP, and Computer Audition. I strive to solve complex problems. My academic journey includes a Master’s degree from the University of Tehran, where I focused on meta-system identification, and practical experience in industries ranging from pharmaceuticals to Entertainment tech innovations. I am dedicated to continuous learning and research, aiming to contribute to the cutting edge of artificial intelligence and its applications.
-            </p>
-
-            <!-- <div class="row">
-
-               <div class="columns contact-details">
-
-                  <h2>Contact Details</h2>
-                  <p class="address">
-						   <span>Abbas Nosrat</span><br>
-			
-						   <span>(+98)935-773-7886</span><br>
-                     <span>abbasnosrat@gmail.com</span>
-					   </p>
-
-               </div> -->
-
-               <div class="columns download">
-                  <p>
-                     <a href="CV.pdf" class="button"><i class="fa fa-download"></i>Download Resume (PDF)</a>
-                  </p>
-               </div>
-
-            </div> <!-- end row -->
-
-         </div> <!-- end .main-col -->
-
-      </div>
-
-   </section> <!-- About Section End-->
-
-
-   <!-- Resume Section
-   ================================================== -->
-   <section id="resume">
-      <div class="row hobbies" id="research">
-
-         <div class="three columns header-col">
-            <h1>Research Interests</h1>
-         </div>
-       <!-- Skills
-       ----------------------------------------------- -->
-      
-      
-         <div class="nine columns main-col">
-      
-            <div class="row item">
-      
-               <div class="twelve columns">
-      
-                  <ul>
-                     <li style="color:black;font-weight:bold;font-size:18px">Computer Vision</li>
-                     <li style="color:black;font-weight:bold;font-size:18px">Deep Learning</li>
-                     <li style="color:black;font-weight:bold;font-size:18px">Signal Processing</li>
-                     <li style="color:black;font-weight:bold;font-size:18px">Natural Language Processing</li>
-                     
-      
-                  </ul>
-      
-               </div>
-      
-            </div> <!-- item end -->
-      
-         </div> <!-- main-col end -->
-      
-      </div> <!-- End of Volunteer Works-->
-      </div>
-      </div>
-    
-      <div class="row education" id="education">
-
-         <div class="three columns header-col">
-            <h1>Education</h1>
-         </div>
-
-         <div class="nine columns main-col">
-
-            <div class="row item">
-
-               <div class="eleven columns main-col">
-
-                  <h3>University of Tehran (GPA:17.06/20)</h3>
-                  <p class="info">Master in Control Engineering <span>&bull;</span> <em class="date">September 2020</em></p>
-                  <p>
-                    
-                        <h1>Highlights</h1>
-                        <dl class="disc">
-                        <dd style="color:black;font-weight:bold;font-size:15px"> Worked on Deep learning</dd>
-                        <dd style="color:black;font-weight:bold;font-size:15px"> Worked on System Identification</dd>
-                    </dl>
-                        <h1>Related coursework</h1>
-                        <dd style="color:black;font-weight:bold;font-size:15px">Machine Learning, Neural Networks & Deep Learning, Advanced Deep Learning,
-                             Analysis & Design of Deep Neural Networks, System Identification, Statistical Inference, Non-linear Control Systems, Optimal Control
-                            </dd>
-
-                        <h1>Supervisors</h1>
-                        <dd style="color:black;font-weight:bold;font-size:15px"><a href="https://scholar.google.com/citations?user=m7xdmMgAAAAJ&hl=en">Prof. Ahmad Kalhor</a>, <a href="https://scholar.google.com/citations?user=FTcata0AAAAJ&hl=en">Prof. Babak N Araabi</a></dd>
-                        <h1>Thesis</h1>
-                        <dd style="color:black;font-weight:bold;font-size:15px">Meta System Identification</dd>
-                      </dl>
-                      
-                  </p>
-                  
-<!-- 
-                  <p>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                  ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-                  Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. Nullam dictum felis eu pede mollis pretium.
-                  </p>
-
-               </div> -->
-
-            </div>
-         </div>
-
-
-
-
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3>Imam Khomeini International University</h3>
-                  <p class="info">B.S. Degree in Electrical Engineering <span>&bull;</span> <em class="date">September 2015 - August 2020</em></p>
-                  <p>                    <dl>
-                                        
-                     <h1>Highlights</h1>
-                     <dl class="disc">
-                     <dd style="color:black;font-weight:bold;font-size:15px"> Worked on fuzzy control</dd>
-                     
-                 </dl>
-                    <h1>Related coursework</h1>
-                    <dd style="color:black;font-weight:bold;font-size:15px">Linear Control Systems, Digital Control, Digital Signal Processing, 
-                        Signals & Systems, Linear Algebra, Modern Control, Fuzzy Control</dd>
-                    <dd style="color:black;font-weight:bold;font-size:15px"></dd>
-                    <h1>Supervisors</h1>
-                        <dd style="color:black;font-weight:bold;font-size:15px"><a href="http://ikiu.ac.ir/members/?id=24&lang=1">Prof. Hasan Zarabadi</a></dd>
-                    <h1>Thesis</h1>
-                    <dd style="color:black;font-weight:bold;font-size:15px">A survey on fuzzy control of bipedal robots</dd>
-                    
-                  </dl></p>
-                  <!-- <p>
-                  This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                  Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                  nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
-                  ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat
-                  </p>
-
-               </div> -->
-
-            </div> <!-- item end -->
-
-         </div> <!-- main-col end -->
-
-      </div> <!-- End Education -->
-    </div>
-</div> <!-- item end -->
-</div>
-</div>
-
-<!-- <div class="row hobbies" id="research">
-
-   <div class="three columns header-col">
-      <h1>Research Interests</h1>
-   </div> -->
- <!-- Skills
- ----------------------------------------------- -->
-
-
-   <!-- <div class="nine columns main-col">
-
-      <div class="row item">
-
-         <div class="twelve columns">
-
-            <ul>
-               <li style="color:black;font-weight:bold;font-size:18px">Multi-Task Learning</li>
-               <li style="color:black;font-weight:bold;font-size:18px">Self-Supervised Learning</li>
-               <li style="color:black;font-weight:bold;font-size:18px">Meta-Learning</li>
-               <li style="color:black;font-weight:bold;font-size:18px">Reinforcement Learning</li>
-               
-
-            </ul>
-
-         </div>
-
-      </div>  item end -->
-
-   </div> <!-- main-col end -->
-
-</div> <!-- End of Volunteer Works-->
-</div>
-</div> 
-
-<div class="row tech" id="tech">
-
-    <div class="three columns header-col">
-       <h1>Technical Background</h1>
-    </div>
-
-    <div class="nine columns main-col">
-
-       <div class="row item">
-
-          <div class="twelve columns">
-                <h3>Programming Languages</h3>
-            <ul>
-                <li  style="color:black;font-weight:bold;font-size:18px">Python, SQL, Matlab, Julia, Bash, R</li>
-                
-            </ul>
-            <h3>Machine Learning and Deep Learning Libraries</h3>
-            <ul>
-                <li  style="color:black;font-weight:bold;font-size:18px">Scikit-learn, Pytorch, Tensorflow, Flux.jl</li>
-
-                
-            </ul>
-            <h3>Numerical Analysis and Optimization Libraries</h3>
-            <ul>
-                <li  style="color:black;font-weight:bold;font-size:18px">NumPy, SciPy</li>
-                
-                
-            </ul>
-            <h3>Software Development Tools</h3>
-            <ul>
-                <li  style="color:black;font-weight:bold;font-size:18px">Git, Docker, FastAPI, StreamLit,Figma, Jira</li>
-                
-                
-            </ul>
-           </div>
-
-        </div> <!-- item end -->
-
-     </div> <!-- main-col end -->
-
-  </div> <!-- End of Technical Skills-->
-</div>
-
-
-<div class="row education" id="projects">
-
-   <div class="three columns header-col">
-      <h1>Projects</h1>
-   </div>
-
-   <div class="nine columns main-col">
-
-      <div class="row item">
-
-         <div class="eleven columns main-col">
-
-            <h3>TFNet</h3>
-            
-              
-                  <h1>Abstract</h1>
-                  <dl class="disc">
-                  <dd style="color:black;font-weight:bold;font-size:15px"> This project is the main project of my thesis. TFNet is a few-shot identification method
-,which uses CNNs to identify the system's structure and parameters from its pulse response.</dd>
-                  
-              </dl>
-                  <h1>Status</h1>
-                  <dd style="color:black;font-weight:bold;font-size:15px">The code is available on <a href="https://github.com/abbasnosrat/TFNet"> github</a>.
-                      </dd>
-
-
-                
-            </p>
-            
-<!-- 
-            <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-            ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-            Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. Nullam dictum felis eu pede mollis pretium.
-            </p>
-
-         </div> -->
-
-      </div>
-   </div>
-
-
-
-
-      <div class="row item">
-
-         <div class="twelve columns">
-
-            <h3>TFNet 2</h3>
-                        <dl>
-                                  
-               <h1>Abstract</h1>
-               <dl class="disc">
-               <dd style="color:black;font-weight:bold;font-size:15px"> This project is direct sequel to TFNet. Using Multi-Task learning, 
-               I am reducing the number of networks used in TFNet. This will result in a more elegant and compact identifier and solves the
-             scalability issues of TFNet and increases its order classification accuracy.</dd>
-               
-           </dl>
-              <h1>Status</h1>
-              <dd style="color:black;font-weight:bold;font-size:15px">Ongoing</dd>
-              
-              
-            </dl></p>
-            <!-- <p>
-            This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-            Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-            nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
-            ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat
-            </p>
-
-         </div> -->
-
-      </div> <!-- item end -->
-
-   </div> <!-- main-col end -->
-
-   <div class="row item">
-
-      <div class="twelve columns">
-   
-         <h3>NLP-BASED PERFORMANCE EVALUATION OF MEDICAL SALES REPRESENTATIVES</h3>
-                     <dl>
-            <h1>Ronak Pharmaceutical Corp</h1>
-            <h1>Abstract</h1>
-            <dl class="disc">
-            <dd style="color:black;font-weight:bold;font-size:15px"> In this project, I used NLP techniques to find the most similar sales invoice to each visit record and if that invoice was created
-               within 40 days after the visit, that visit is considered successful.</dd>
-            
-        </dl>
-           <h1>Status</h1>
-           <dd style="color:black;font-weight:bold;font-size:15px">Completed</dd>
-           
-           
-         </dl></p>
-   
-   
-   </div> <!-- item end -->
-   
-
-   <div class="row item"></div>
-
-      <div class="twelve columns">
-   
-         <h3>NLP-BASED UNIFICATION OF SALES DATABASE</h3>
-                     <dl>
-            <h1>Ronak Pharmaceutical Corp</h1>
-            <h1>Abstract</h1>
-            <dl class="disc">
-            <dd style="color:black;font-weight:bold;font-size:15px"> Since different distribution centers use different naming conventions for naming their customers, entities appear with different
-               names in the database resulting in incorrect analysis. In this project, I used NLP techniques to clean and cluster entities with
-               similar names for database unification.</dd>
-            
-        </dl>
-           <h1>Status</h1>
-           <dd style="color:black;font-weight:bold;font-size:15px">Completed</dd>
-           
-           
-         </dl></p>
-   
-   
-   </div> <!-- item end -->
-
-   
-   <div class="row item"></div>
-
-      <div class="twelve columns">
-   
-         <h3><a href="https://github.com/abbasnosrat/RonakMarketSizePrediction">MARKET SIZE PREDICTION </a></h3>
-                     <dl>
-            <h1>Ronak Pharmaceutical Corp</h1>
-            <h1>Abstract</h1>
-            <dl class="disc">
-            <dd style="color:black;font-weight:bold;font-size:15px"> In this Project, I used FBProphet, XGBoost, and Bayesian optimization to predict the market size for each product for the following year. <a href="https://ronakmarketsizeprediction.streamlit.app/">This</a> will lead you to the Streamlit app</dd>
-            
-        </dl>
-           <h1>Status</h1>
-           <dd style="color:black;font-weight:bold;font-size:15px">Completed</dd>
-           
-           
-         </dl></p>
-   
-   
-   </div> <!-- item end -->
-   </div> <!-- main-col end -->
-
-   <div class="row item"></div>
-
-   <div class="twelve columns">
-
-      <h3><a href="https://github.com/abbasnosrat/ProductionPlan">PRODUCTION PLANNING USING DISCRETE OPTIMIZATION </a></h3>
-                  <dl>
-         <h1>Ronak Pharmaceutical Corp</h1>
-         <h1>Abstract</h1>
-         <dl class="disc">
-         <dd style="color:black;font-weight:bold;font-size:15px"> In this Project, I used Google’s ORTools and FastAPI to develop a discrete optimization for production planning using a user
-            input list of products, the production cost and the profit of each product.
-            </dd>
-         
-     </dl>
-        <h1>Status</h1>
-        <dd style="color:black;font-weight:bold;font-size:15px">Completed</dd>
-        
-        
-      </dl></p>
-
-
-</div> <!-- item end -->
-
-
-
-<div class="row item"></div>
-
-<div class="twelve columns">
-
-   <h3>ZERO-SHOT VOICE CONVERSION USING NON-PARALLEL AUDIO
-   </h3>
-               <dl>
-      <h1>Idependent Contract</h1>
-      <h1>Abstract</h1>
-      <dl class="disc">
-      <dd style="color:black;font-weight:bold;font-size:15px"> I am currently developing a framework for Persian VC for a Multi-Media company in Iran.
-      </dd>
-      
-  </dl>
-     <h1>Status</h1>
-     <dd style="color:black;font-weight:bold;font-size:15px">Ongoing</dd>
-     
-     
-   </dl></p>
-
-
-</div> <!-- item end -->
-</div> <!-- main-col end -->
-   
-
-
-</div> <!-- End Education -->
-</div>
-</div> <!-- item end -->
-</div>
-</div>
-
-
-
-
-<div class="row education" id="projects">
-
-   <div class="three columns header-col">
-      <h1>Assignments and Hobby projects</h1>
-   </div>
-
-   <div class="nine columns main-col">
-
-      <div class="row item">
-
-         <div class="eleven columns main-col">
-
-         <h3>A Comparison between ballancing approaches in Multi-Task learning balancing methods</h3>
-                     <dl>
-                               
-            
-            <dl class="disc">
-            <dd style="color:black;font-weight:bold;font-size:15px"> I had to choose a loss/gradient balancing method for TFNet 2. Therefore,
-             I started implementing a few papers and comparing them on CIFAR 10 on two tasks of classification and reconstruction.</dd>
-            
-        </dl>
-           <h1>Status</h1>
-           <dd style="color:black;font-weight:bold;font-size:15px">Completed. The code is in <a href="https://github.com/abbasnosrat/mtl_comp">this repository</a>.</dd>
-           
-           
-         </dl></p>
-
-
-   </div> <!-- item end -->
-   
-
-   
-
-</div> <!-- main-col end -->
-
-<div class="nine columns main-col">
-
-   <div class="row item">
-
-      <div class="eleven columns main-col">
-
-      <h3>FLOW MATCHING FOR GENERATIVE MODELING</h3>
-                  <dl>
-                            
-         
-         <dl class="disc">
-         <dd style="color:black;font-weight:bold;font-size:15px"> Since my Voice Conversion project required this paper and there was no intuitive tutorial for this paper, I decided to share my
-            simple implementation on GitHub.</dd>
-         
-     </dl>
-        <h1>Status</h1>
-        <dd style="color:black;font-weight:bold;font-size:15px">Completed. The code is in <a href="https://github.com/abbasnosrat/FlowMatchingForGenerativeModeling">this repository</a>.</dd>
-        
-        
-      </dl></p>
-
-
-</div> <!-- item end -->
-
-
-<div class="row item">
-
-   <div class="twelve columns">
-
-      <h3>Coursework Assignments</h3>
-                  <dl>
-                            
-         
-         <dl class="disc">
-         <dt style="color:black;font-weight:bold;font-size:18px"> Implementation of UNet</dt>
-         <dd style="color:black;font-weight:bold;font-size:15px">This project was one of the assignments in the Neural Networks & Deep Learning course. I have implemented UNet for segmentation on camvid dataset. The code is in <a href="https://github.com/abbasnosrat/UNet">this repository</a></dd>
-         <dt style="color:black;font-weight:bold;font-size:18px"> Implementation of CycleGan and VQVAE</dt>
-         <dd style="color:black;font-weight:bold;font-size:15px">This project was one of the assignments in Advanced Deep Learning course. The code is in <a href="https://github.com/abbasnosrat/assignments_/tree/master/advanced_deep_learning/HW2">this repository</a></dd>
-         <dt style="color:black;font-weight:bold;font-size:18px"> Comparison between CircleLoss and TripletLoss</dt>
-         <dd style="color:black;font-weight:bold;font-size:15px">This project was one of the assignments in Analysis & Design of Deep Neural Networks course. The code is in <a href="https://github.com/abbasnosrat/assignments_/tree/master/analisys%20_and_design_of_neural_networks/HW2">this repository</a></dd>
-         <dt style="color:black;font-weight:bold;font-size:18px"> Implementation of rotation prediction method</dt>
-         <dd style="color:black;font-weight:bold;font-size:15px">This project is the implementation of rotation prediction as an auxilary task for self self-Supervised representation learning.
-            This project was one of the assignments in Advanced Deep Learning course. The code is in <a href="https://github.com/abbasnosrat/assignments_/tree/master/advanced_deep_learning/HW3">this repository</a></dd>
-         <dt style="color:black;font-weight:bold;font-size:18px"> Adversarial attacks and explainability</dt>
-         <dd style="color:black;font-weight:bold;font-size:15px">In this project I used adversarial examples as a defence against adversarial attacks and used SHAP and LIME methods to investigate explainability in a BERT model.
-            This project was one of the assignments in Advanced Deep Learning course. The code is in <a href="https://github.com/abbasnosrat/assignments_/tree/master/advanced_deep_learning/HW4">this repository</a></dd>
-         
-     </dl>
-</p>
-
-
-
-
-
-
-
-
-
-</div> <!-- End Education -->
-</div>
-</div> <!-- item end -->
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-      <!-- Work
-      ----------------------------------------------- -->
-      <div class="row publications" id="publications">
-
-         <div class="three columns header-col">
-            <h1>Publications</h1>
-         </div>
-
-         <div class="nine columns main-col">
-
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3><a href="https://doi.org/10.1016/j.jprocont.2023.103034">TFNet: Few-Shot Identification of LTI Systems Based on
-                    Convolutional Neural Networks</a></h3>
-                  <p class="info">Abbas Nosrat,
-                    , Ahmad Kalhor, Mohammad Reza Nayeri
-                    , Babak N Araabi <span>&bull;</span> <em class="date">Published at Journal of Process Control (IF:3.3)</em></p>
-
-                  <!-- <p>
-                    <h1>Abstract</h1>
-                    Recent research in system identification aims to reduce the amount of data required for identification and the persistence of exicitation while maintaining the identified model’s generalization and goodness of fit. This paper introduces TFNet as a few-shot
-                    identification method for industrial systems with two stages. TFNet enables both structural and parametric identification of inndustrial linear time-invariant systems from their pulse response. Furthermore, TFNet identifies properties such as existence of
-                    integrator and non-minimum-phase zeros in systems, as long as the order of the system is below two. Based on the comparison
-                    of TFNet to classical and rival methods using synthetic data, we show that TFNet outperforms the classical and rival methods by
-                    a wide margin. Furthermore, case studies on an air temperature control system and a two-tank control system laboratory setups
-                    demonstrate that TFNet estimates a close model to the ground truth despite colored measurement noise and without driving the
-                    system out of its operating point.
-                  </p> -->
-
-               </div>
-
-            </div>
-        </div> <!-- item end -->
-    </div>
-</div>
-
-<div class="row hobbies">
-
-   <div class="three columns header-col">
-      <h1>Honors and Awards</h1>
-   </div>
- <!-- Skills
- ----------------------------------------------- -->
-
-
-   <div class="nine columns main-col">
-
-      <div class="row item">
-
-         <div class="twelve columns">
-
-            <ul>
-               <li style="color:black;font-weight:bold;font-size:18px">Ranked 24th in Iran's National University Entrance for Control Engineering Masters Degree in 2020.</li>
-               <li style="color:black;font-weight:bold;font-size:18px">Member, Iranian National Elite Foundation 2024.</li>
-               
-
-            </ul>
-
-         </div>
-
-      </div> <!-- item end -->
-
-   </div> <!-- main-col end -->
-
-</div> <!-- End of Volunteer Works-->
-
-</div>
-</div>
-<div class="row hobbies">
-
-   <div class="three columns header-col">
-      <h1>Languages</h1>
-   </div>
- <!-- Skills
- ----------------------------------------------- -->
-
-
-   <div class="nine columns main-col">
-
-      <div class="row item">
-
-         <div class="twelve columns">
-
-            <ul>
-               <li style="color:black;font-weight:bold;font-size:18px">Persian, Native Tongue</li>
-               <li style="color:black;font-weight:bold;font-size:18px">English, IELTS 8 (Listening 9, Reading 8.5, Speaking 7.5, Writing 6.5)</li>
-               
-
-            </ul>
-
-         </div>
-
-      </div> <!-- item end -->
-
-   </div> <!-- main-col end -->
-
-</div> <!-- End of Volunteer Works-->
-
-</div>
-</div>
-
-
-      <!-- Work
-      ----------------------------------------------- -->
-      <div class="row teaching" id="teaching">
-
-        <div class="three columns header-col">
-           <h1>Teaching Experience</h1>
+    <div class="bg-grid"></div>
+    <div class="glowing-orb"></div>
+    <div class="glowing-orb-2"></div>
+
+    <nav>
+        <div class="logo">Abbas Nosrat</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#publications">Publications</a>
+            <a href="#skills">Skills</a>
         </div>
+    </nav>
 
-        <div class="nine columns main-col">
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="container">
+            <!-- New Flex Layout -->
+            <div class="hero-layout">
+                
+                <!-- Text Content -->
+                <div class="hero-content">
+                    <h1>Abbas Nosrat</h1>
+                    <h2>AI RESEARCHER</h2>
+                    <p>
+                        I am a passionate AI researcher/instructor with expertise in deep learning and machine learning with a strong mathematical foundation due to my control engineering background and extensive hands‑on experience in projects related to Computer Vision, NLP, DSP, and Computer Audition. I strive to solve complex problems. My academic journey includes a Master’s degree from the University of Tehran, where I focused on meta‑system identification, and practical experience in industries ranging from pharmaceuticals to entertainment tech innovations. I am dedicated to continuous learning and research, aiming to contribute to the cutting edge of artificial intelligence and its applications. I have also gained valuable experience in AI project management and the business aspects of an AI project due to working with the military and Ronak Pharmaceutical Corp.
+                    </p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-pill">
+                            <i class="fas fa-map-marker-alt"></i> Tehran, Iran
+                        </div>
+                        <div class="contact-pill">
+                            <i class="fas fa-phone"></i> +98 935-773-7886
+                        </div>
+                        <div class="contact-pill">
+                            <i class="fas fa-envelope"></i> <a href="mailto:abbasnosrat@gmail.com">abbasnosrat@gmail.com</a>
+                        </div>
+                        <div class="contact-pill">
+                            <i class="fab fa-github"></i> <a href="https://github.com/abbasnosrat" target="_blank">abbasnosrat</a>
+                        </div>
+                        <div class="contact-pill">
+                            <i class="fab fa-linkedin"></i> <a href="#" target="_blank">abbas-nosrat-72b261234</a>
+                        </div>
+                    </div>
+                </div>
 
-           <div class="row item">
+                <!-- Profile Image -->
+                <div class="hero-image-container">
+                    <div class="profile-pic-wrapper">
+                        <!-- REPLACE THE SRC BELOW WITH YOUR IMAGE PATH -->
+                        <img src="./profile.jpeg" alt="Abbas Nosrat Profile Picture">
+                    </div>
+                </div>
 
-              <div class="twelve columns">
+            </div>
+        </div>
+    </header>
 
-                 <h3>University of Tehran</h3>
-                 <p class="info">Teaching Assistant
+    <!-- Personal Details Mini Section -->
+    <section id="about">
+        <div class="container">
+            <div class="grid-2">
+                <div class="info-card">
+                    <h3 class="sub-title">// Personal Details</h3>
+                    <p><strong>Age:</strong> 29</p>
+                    <p><strong>Marital Status:</strong> Single</p>
+                    <p><strong>Military Service:</strong> Served</p>
+                    <p><strong>Languages:</strong> Persian (Native), English (IELTS 8: L-9, R-8.5, S-7.5, W-6.5)</p>
+                </div>
+                <div class="info-card">
+                    <h3 class="sub-title">Technical Skills</h3>
+                    <div style="display:grid; gap:10px; color:var(--text-muted); font-size:0.9rem;">
+                        <p><strong style="color:#fff;">Languages:</strong> Python, Matlab, Bash, Julia, R</p>
+                        <p><strong style="color:#fff;">ML Frameworks:</strong> Scikit‑learn, Pytorch, Tensorflow, LangChain, LangGraph, Flux.jl</p>
+                        <p><strong style="color:#fff;">Dev Tools:</strong> Linux (Debian/RedHat/Arch), Git, SQL, Figma, Jira</p>
+                        <p><strong style="color:#fff;">Deployment:</strong> Streamlit, FastAPI, Docker, TorchServe</p>
+                        <p><strong style="color:#fff;">Writing:</strong> LATEX, Lyx</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <ul>
-                        <li style="color:black;font-weight:bold;font-size:18px">Machine Learning</li>
-                        <li style="color:black;font-weight:bold;font-size:18px">Analysis & Design of Deep Neural Networks</li>
-                        <li style="color:black;font-weight:bold;font-size:18px">System Identification</li>
-                        <li style="color:black;font-weight:bold;font-size:18px">Linear Control Systems Lab</li>
-                        <li style="color:black;font-weight:bold;font-size:18px">Trustworthy AI</li>
-                        
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                
+                <!-- Job 1 -->
+                <div class="experience-card">
+                    <div class="timeline-dot"></div>
+                    <div class="card-header">
+                        <div>
+                            <div class="role-title">AI Engineer</div>
+                            <div class="company">Sepehr Ban Hooshyar</div>
+                        </div>
+                        <div class="date-badge">Oct 2024 - Jan 2025</div>
+                    </div>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Developed advanced signal processing models for industrial applications.</p>
+                    <button class="view-projects-btn" onclick="toggleProjects(this)">View Projects</button>
+                    
+                    <div class="projects-container">
+                        <!-- Project mapped from "Sepehrban Hooshyar" section in CV -->
+                        <div class="project-item">
+                            <h4 class="project-title">ELINT PULSE DETECTION <span class="project-status">Completed</span></h4>
+                            <p class="project-desc">I developed a model for detecting ELINT pulses for accurate EDW estimation and emmiter identification using a TCN‑Transformer hybrid architecture combined with a hybrid focal loss + contrastive learning training framework.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Multi-task learning</span>
+                                <span class="skill-tag">Signal Processing</span>
+                                <span class="skill-tag">Transformers</span>
+                                <span class="skill-tag">Time series classification</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="experience-card">
+                    <div class="timeline-dot"></div>
+                    <div class="card-header">
+                        <div>
+                            <div class="role-title">AI Researcher</div>
+                            <div class="company">Iranian Military Research Center</div>
+                        </div>
+                        <div class="date-badge">Sep 2024 - Oct 2024</div>
+                    </div>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Conducted research in computer audition and voice cloning technologies during military service replacement.</p>
+                    <button class="view-projects-btn" onclick="toggleProjects(this)">View Projects</button>
+                    
+                    <div class="projects-container">
+                        <!-- Project mapped from "Military" section in CV -->
+                        <div class="project-item">
+                            <h4 class="project-title">ZERO‑SHOT VOICE CONVERSION USING NON‑PARALLEL AUDIO <span class="project-status">Completed</span></h4>
+                            <p class="project-desc">I developed a framework for Persian VC for the Iranian military as a replacement project for my military service. The framework utilized a flow‑matching conditioned with Cam++ speaker embeddings and OpenAI’s Whisper for content embeddings to clone the voice of a speaker from a small speech utterance without prior training on the target speaker. The model was trained on CommonVoice dataset and deployed using TorchServe and Docker.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Signal Processing</span>
+                                <span class="skill-tag">Computer Audition</span>
+                                <span class="skill-tag">Voice Conversion</span>
+                                <span class="skill-tag">Speech Synthesis</span>
+                                <span class="skill-tag">Diffusion‑Based Generative Models</span>
+                                <span class="skill-tag">In‑Context Learning</span>
+                                <span class="skill-tag">Flow‑Matching</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="experience-card">
+                    <div class="timeline-dot"></div>
+                    <div class="card-header">
+                        <div>
+                            <div class="role-title">Instructor (Part‑Time)</div>
+                            <div class="company">Tehran Institute of Technology</div>
+                        </div>
+                        <div class="date-badge">Dec 2024 - Mar 2025</div>
+                    </div>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Taught courses on Data Analysis, Machine Learning, and Deep Learning.</p>
+                    <!-- No specific development projects listed for this role in CV, just teaching -->
+                </div>
+
+                <!-- Job 4 -->
+                <div class="experience-card">
+                    <div class="timeline-dot"></div>
+                    <div class="card-header">
+                        <div>
+                            <div class="role-title">Data Scientist</div>
+                            <div class="company">Ronak Pharmaceutical Co</div>
+                        </div>
+                        <div class="date-badge">Sep 2023 - Sep 2024</div>
+                    </div>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Applied NLP and predictive modeling to business and sales processes.</p>
+                    <button class="view-projects-btn" onclick="toggleProjects(this)">View Projects</button>
+                    
+                    <div class="projects-container">
+                        <!-- Projects mapped from "Ronak Pharmaceutical Co" section in CV -->
+                        <div class="project-item">
+                            <h4 class="project-title">NLP‑BASED PERFORMANCE EVALUATION OF MEDICAL SALES REPRESENTATIVES <span class="project-status">Completed</span></h4>
+                            <p class="project-desc">In this project, I used NLP techniques to find the most similar sales invoice to each visit record and if that invoice was created within 40 days after the visit, that visit is considered successful.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">NLP</span>
+                                <span class="skill-tag">LLMs</span>
+                                <span class="skill-tag">Unsupervised Learning</span>
+                                <span class="skill-tag">Entity Matching</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <h4 class="project-title">MARKET SIZE PREDICTION <span class="project-status">Completed</span></h4>
+                            <p class="project-desc">In this Project, I used FBProphet, XGBoost, and Bayesian optimization to predict the market size for each product for the following year. This will lead you to the Streamlit app.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Time‑Series Prediction</span>
+                                <span class="skill-tag">FBProphet</span>
+                                <span class="skill-tag">XGBoost</span>
+                                <span class="skill-tag">Auto‑Regressive Models</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 5 -->
+                <div class="experience-card">
+                    <div class="timeline-dot"></div>
+                    <div class="card-header">
+                        <div>
+                            <div class="role-title">Research Assistant</div>
+                            <div class="company">Machine Learning and Computational Modeling Lab, University of Tehran</div>
+                        </div>
+                        <div class="date-badge">Sep 2021 - Sep 2023</div>
+                    </div>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Focused on System Identification and Deep Learning research.</p>
+                    <button class="view-projects-btn" onclick="toggleProjects(this)">View Projects</button>
+                    
+                    <div class="projects-container">
+                        <!-- Projects mapped from "University of Tehran" section in CV -->
+                        <div class="project-item">
+                            <h4 class="project-title">TFNET <span class="project-status">Completed</span></h4>
+                            <p class="project-desc">This is my main master’s project in which I developed a method for parametric and structural identification of industrial systems from a non‑persistent excitation and a handful of I/O data.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">System Identification</span>
+                                <span class="skill-tag">Control Theory</span>
+                                <span class="skill-tag">Machine Learning</span>
+                                <span class="skill-tag">Signal Processing</span>
+                                <span class="skill-tag">Time‑Series Modeling</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <h4 class="project-title">TFNET 2 <span class="project-status">Ongoing</span></h4>
+                            <p class="project-desc">This project is an improvement on TFNet. In this project, I am utilizing multi‑task learning methods to combine the classifier and the parameter estimator to improve TFNet’s accuracy and scalability.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">System Identification</span>
+                                <span class="skill-tag">Control Theory</span>
+                                <span class="skill-tag">Machine Learning</span>
+                                <span class="skill-tag">Signal Processing</span>
+                                <span class="skill-tag">Multi‑Task Learning</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <h4 class="project-title">Coursework Projects <span class="project-status">Completed</span></h4>
+                            <p class="project-desc">
+                                <strong>Implementation of UNet:</strong> Object Segmentation, Computer Vision.<br>
+                                <strong>Implementation of CycleGan and VQVAE:</strong> Computer Vision, Generative Modeling, GAN, VAE.<br>
+                                <strong>Implementation of rotation prediction method:</strong> Self‑Supervised Learning, Representation Learning.<br>
+                                <strong>Adversarial attacks and explainability:</strong> Fast Gradient Adversarial Attacks, Model Explainability, LLMs, SHAP, LIME.<br>
+                                <strong>Few‑shot classification and person reidentification using contrastive learning:</strong> Metric Learning, Contrastive Learning, Siames Networks, Few‑Shot Learning.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 6 (Hobby Projects treated as experience) -->
+                <div class="experience-card">
+                    <div class="timeline-dot"></div>
+                    <div class="card-header">
+                        <div>
+                            <div class="role-title">Independent Researcher & Developer</div>
+                            <div class="company">Personal R&D / Hobby Projects</div>
+                        </div>
+                        <div class="date-badge">Ongoing</div>
+                    </div>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Exploring Agentic AI, Generative Models, and Graph Neural Networks.</p>
+                    <button class="view-projects-btn" onclick="toggleProjects(this)">View Projects</button>
+                    
+                    <div class="projects-container">
+                        <!-- Projects mapped from "Hobby Projects" section in CV -->
+                        <div class="project-item">
+                            <h4 class="project-title">SQLMCPSERVER + AGENT <span class="project-status">Completed</span></h4>
+                            <p class="project-desc">In this project I developed an AI agent that can manipulate a database of retail cars using SQL. The agent can add new ads or show the existing cars according to the user preference.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Agentic AI</span>
+                                <span class="skill-tag">NLP</span>
+                                <span class="skill-tag">LangChain</span>
+                                <span class="skill-tag">LangGraph</span>
+                                <span class="skill-tag">MCP Server</span>
+                                <span class="skill-tag">SQL</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <h4 class="project-title">RESEARCH IDENTIFICATION <span class="project-status">Completed</span></h4>
+                            <p class="project-desc">Reading research papers has always been a major hassle for me—especially when trying to identify the latest research themes of a particular author. I wanted to try LangGraph for the first time, but since I can’t access the OpenAI stack from Iran, I decided to build my own agent using a local Qwen3 model. I developed a scraping tool to collect the latest research papers from an author’s Google Scholar profile and used the model to identify the main themes of each paper.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Agentic AI</span>
+                                <span class="skill-tag">NLP</span>
+                                <span class="skill-tag">LangChain</span>
+                                <span class="skill-tag">LangGraph</span>
+                                <span class="skill-tag">LlamaCPP</span>
+                                <span class="skill-tag">Local LLMs</span>
+                                <span class="skill-tag">Web Scraping</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <h4 class="project-title">FLOWMATCHING FOR GENERATIVE MODELING <span class="project-status">Completed</span></h4>
+                            <p class="project-desc">Since my Voice Conversion project required this paper and there was no intuitive tutorial for this paper, I decided to share my simple implementation on GitHub.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Diffusion‑Based Generative Models</span>
+                                <span class="skill-tag">Conditioned Generation</span>
+                                <span class="skill-tag">Flow‑Matching</span>
+                                <span class="skill-tag">DIT</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <h4 class="project-title">COMPARISON OF MTL LOSS‑BALANCING STRATEGIES <span class="project-status">Completed</span></h4>
+                            <p class="project-desc">While working on TFNet 2, I had to compare different loss‑balancing strategies in MTL. Here is my implementation of Three methods in this field.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Multi‑Task Learning</span>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <h4 class="project-title">GNNS FROM SCRATCH <span class="project-status">Ongoing</span></h4>
+                            <p class="project-desc">I was trying to get into GNNs and thought of no better way than to implement a few architectures from scratch. In this repo, I have implemented Graph Convolution, GAT, and GraphSage and trained them on CORA dataset. I will add new implementations further down the line.</p>
+                            <div class="project-skills">
+                                <span class="skill-tag">Graph Neural Networks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="grid-2">
+                <div class="info-card">
+                    <h3 class="sub-title">University of Tehran</h3>
+                    <p><strong>Degree:</strong> MSC Control Engineering (2020 - 2023)</p>
+                    <p><strong>GPA:</strong> 17.06/20</p>
+                    <p style="margin-top:10px; font-size:0.9rem; color:#ccc;">
+                        <strong>Thesis:</strong> Meta System Identification<br>
+                        <strong>Supervisors:</strong> Dr. Ahmad Kalhor, Dr. Babak N Araabi<br>
+                        <strong>Advisor:</strong> Dr. Mohammad Reza Nayeri
+                    </p>
+                    <div style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted);">
+                        <strong>Coursework:</strong> Machine Learning, Neural Networks and Deep Learning, Advanced Deep Learning, Analysis and Design of Neural Networks, Statistical Inference, System Identification, Optimal Control, Non-Linear Control Systems.
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3 class="sub-title">Imam Khomeini International University</h3>
+                    <p><strong>Degree:</strong> BS Electrical Engineering (2015 - 2020)</p>
+                    <p><strong>GPA:</strong> 13.15/20</p>
+                    <p style="margin-top:10px; font-size:0.9rem; color:#ccc;">
+                        <strong>Advisor:</strong> Dr. Hasan Zarabadipour
+                    </p>
+                    <div style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted);">
+                        <strong>Coursework:</strong> Linear Algebra, Linear Control Systems, Digital Signal Processing, Signals and Systems.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div class="info-card">
+                <div class="pub-item">
+                    <h3 class="sub-title" style="font-size:1rem;">TFNet: Few‑Shot Identification of LTI Systems Based on Convolutional Neural Networks</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">
+                        <strong>Journal:</strong> Journal of Process Control<br>
+                        <strong>Authors:</strong> Abbas Nosrat, Ahmad Kalhor, Mohammad Reza Nayeri, Babak N Araabi<br>
+                        <strong>Impact Factor:</strong> 3.3 | <strong>Cite Score:</strong> 7
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Experience -->
+    <section id="teaching">
+        <div class="container">
+            <h2 class="section-title">Teaching Experience</h2>
+            <div class="info-card">
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 class="sub-title">Tehran Institute of Technology <span style="font-weight:400; font-size:0.8rem; color:var(--text-muted);"> (Instructor)</span></h3>
+                    <ul style="margin-left: 20px; font-size:0.9rem; color:var(--text-muted);">
+                        <li>Data Analysis</li>
+                        <li>Machine Learning</li>
+                        <li>Deep Learning</li>
                     </ul>
-
-           </div> <!-- item end -->
-
-      
-
-
-
-
-
-      </div> <!-- End Work -->
+                </div>
+                <div>
+                    <h3 class="sub-title">University of Tehran <span style="font-weight:400; font-size:0.8rem; color:var(--text-muted);"> (Graduate Teaching Assistant)</span></h3>
+                    <ul style="margin-left: 20px; font-size:0.9rem; color:var(--text-muted);">
+                        <li><strong>Trustworthy AI</strong> (Instructors: Mohammad Amin Sadeghi, Mostafa Tavasoli Poor)</li>
+                        <li><strong>Analysis and Design of Neural Networks</strong> (Instructors: Ahmad Kalhor, Babak N Araabi)</li>
+                        <li><strong>Linear Control Systems Lab</strong> (Instructors: Fariba Bahrami, Abolfazl Yaghmaei)</li>
+                        <li><strong>System Identification</strong> (Instructor: Babak N Araabi)</li>
+                        <li><strong>Machine Learning</strong> (Instructors: Babak N Araabi, Mostafa Tavasoli Poor, Mohammad Reza Abolghasemi)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      <div class="nine columns main-col">
+    </section>
 
-         <div class="row item">
+    <!-- Skills & Interests -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Awards & Interests</h2>
+            <div class="grid-2">
+                <div class="info-card">
+                    <h3 class="sub-title">// Honors & Awards</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;">🏆 2024: Member, Iranian National Elite Foundation</li>
+                        <li>🏆 2020: 24th rank, Iran’s National University Entrance for Control Engineering Masters Degree</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3 class="sub-title">Personal Interests</h3>
+                    <ul style="list-style:none; color:var(--text-muted);">
+                        <li>🎸 Guitar Playing (Blues, Funk and Jazz)</li>
+                        <li>📚 Reading about AI, computer hardware, and Linux topics</li>
+                        <li>🏍️ Motorcycles</li>
+                        <li>🎬 Anime</li>
+                        <li>♟️ Chess</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="twelve columns">
+    <footer>
+        <p>© 2025 Abbas Nosrat. Designed with passion for AI.</p>
+    </footer>
 
-               <h3>Tehran Institute of Technology</h3>
-               <p class="info">Instructor
-
-                  <ul>
-                      <li style="color:black;font-weight:bold;font-size:18px">Machine Learning</li>
-                      <li style="color:black;font-weight:bold;font-size:18px">Data Analysis</li>
-                      <li style="color:black;font-weight:bold;font-size:18px">Deep Learning</li>
-
-                      
-                  </ul>
-
-         </div> <!-- item end -->
-
-    
-
-
-
-
-
-    </div> <!-- End Work -->
-    </div>
-</div>
-<div class="row teaching" id="teaching">
-
-   <div class="three columns header-col">
-      <h1>Work Experience</h1>
-   </div>
-
-
-   
-   <div class="nine columns main-col">
-
-      <div class="row item">
-
-         <div class="row item">
-         
-            <div class="twelve columns">
-         
-               <h3>Instructor</h3>
-               <p class="info">Tehran Institute of Technology<span>&bull;</span> <em class="date">2023 - Present</em></p>
-               <p style="color:black;font-weight:bold;font-size:15px">Teaching Data Analysis, ML, and DL</p>
-         
-            </div> 
-         
-         </div> <!-- item end -->
-         
-         </div> <!-- main-col end -->
-   </div>
-
-   
-         <div class="nine columns main-col">
-
-            <div class="row item">
-      
-               <div class="row item">
-               
-                  <div class="twelve columns">
-               
-                     <h3>Independent Contractor</h3>
-                     <p class="info">AI Researcher<span>&bull;</span> <em class="date">2024 - Present</em></p>
-                     <p style="color:black;font-weight:bold;font-size:15px">Currently working on ZERO-SHOT VC.</p>
-               
-                  </div> 
-               
-               </div> <!-- item end -->
-
-               <div class="nine columns main-col">
-
-                  <div class="row item">
+    <script>
+        // Simple interaction for project toggles
+        function toggleProjects(btn) {
+            const container = btn.nextElementSibling;
+            const isOpen = container.classList.contains('open');
             
-                     <div class="row item">
-                     
-                        <div class="twelve columns">
-                     
-                           <h3>Ronak Pharmaceutical Co</h3>
-                           <p class="info">Data Scientist<span>&bull;</span> <em class="date">2023 - 2024</em></p>
-                           <p style="color:black;font-weight:bold;font-size:15px">Worked on various NLP-BASED projects and Market Size Prediction.</p>
-                     
-                        </div> 
-                     
-                     </div> <!-- item end -->
-               
-               </div> <!-- main-col end -->
+            // Close all other open containers (accordion style)
+            document.querySelectorAll('.projects-container.open').forEach(el => {
+                if(el !== container) el.classList.remove('open');
+            });
 
-         <div class="nine columns main-col">
+            if (isOpen) {
+                container.classList.remove('open');
+                btn.textContent = 'View Projects';
+            } else {
+                container.classList.add('open');
+                btn.textContent = 'Hide Projects';
+                // Smooth scroll to the opened content if needed
+                setTimeout(() => {
+                    container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
 
-            <div class="row item">
-      
-               <div class="row item">
-               
-                  <div class="twelve columns">
-                     <h3>International Journal of Industrial Electronics Control and Optimization</h3>
-                     <p class="info"><a href="International Journal of Industrial Electronics Control and Optimization - Reviewer - Get Review Certificate.pdf">Reviewer</a>
-                        <span>&bull;</span> <em class="date">2023 - Present</em></p>
-                     <!-- <p style="color:black;font-weight:bold;font-size:15px">I tought english to children between the age of 4 to 7.</p> -->
-               
-                  </div> 
-               
-               </div> <!-- item end -->
-               
-               </div> <!-- main-col end -->
-      
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, { threshold: 0.1 });
 
-      <div class="row item">
-
-<div class="row item">
-
-   <div class="twelve columns">
-
-      <h3>Machine Learning and Computational Modeling Lab</h3>
-      <p class="info">Reseach Assistant <span>&bull;</span> <em class="date">2021 - 2023</em></p>
-      <!-- <p style="color:black;font-weight:bold;font-size:15px">I tought english to children between the age of 4 to 7.</p> -->
-
-   </div> 
-
-</div> <!-- item end -->
-
-</div> <!-- main-col end -->
-</div> <!-- End Work -->
-</div>
-</div>
-
-    <div class="row hobbies" id="hobbies">
-
-        <div class="three columns header-col">
-           <h1>Personal Interests</h1>
-        </div>
-      <!-- Skills
-      ----------------------------------------------- -->
-
-
-        <div class="nine columns main-col">
-
-           <div class="row item">
-
-              <div class="twelve columns">
-
-                 <ul>
-                    <li style="color:black;font-weight:bold;font-size:18px">Guitar playing, singing and making music.</li>
-                    <li style="color:black;font-weight:bold;font-size:18px">Motorcycle Riding.</li>
-                    <li style="color:black;font-weight:bold;font-size:18px">Playing video games.</li>
-                    <li style="color:black;font-weight:bold;font-size:18px">Watching Movies and anime.</li>
-                    <li style="color:black;font-weight:bold;font-size:18px">Reading comics and manga.</li>
-                    <li style="color:black;font-weight:bold;font-size:18px">Reading about AI, computer hardware, and Linux topics.</li>
-
-                 </ul>
-
-              </div>
-
-           </div> <!-- item end -->
-
-        </div> <!-- main-col end -->
-
-     </div> <!-- End of Volunteer Works-->
-
-   </section> <!-- Resume Section End-->
-
-
-
-
-
-
-
-
-
-   <!-- Contact Section
-   ================================================== -->
-   <section id="contact">
-
-
-
-
-            <div class="row item">
-
-               <div class="widget widget_contact">
-
-					   <h4>Contacts</h4>
-                  <p></p>
-                  <p class="email"><b>Abbas Nosrat</b> <br> abbasnosrat@gmail.com</p>
-					   <p class="address">
-						   <!-- <br> -->
-						   Address: No. 4 of Torabi St., Hashemi St., Damavand St., Tehran, Iran<br>
-						   <span>(+98)935-773-7886</span>
-
-					   </p>
-                  
-
-				   </div>
-
- 
-
-   </section> <!-- Contact Section End-->
-
-
-   <!-- footer
-   ================================================== -->
-
-
-   <!-- Java Script
-   ================================================== -->
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-
-   <script src="js/jquery.flexslider.js"></script>
-   <script src="js/waypoints.js"></script>
-   <script src="js/jquery.fittext.js"></script>
-   <script src="js/magnific-popup.js"></script>
-   <script src="js/init.js"></script>
-
+        document.querySelectorAll('.experience-card, .info-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
 </body>
-
 </html>
